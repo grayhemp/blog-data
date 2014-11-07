@@ -1,0 +1,13 @@
+transaction type: SELECT only
+scaling factor: 1000
+query mode: simple
+number of clients: 16
+number of threads: 4
+duration: 300 s
+number of transactions actually processed: 562679
+tps = 1875.319313 (including connections establishing)
+tps = 1875.377480 (excluding connections establishing)
+statement latencies in milliseconds:
+	0.004775	\set naccounts 100000 * :scale
+	0.003183	\setrandom aid 1 :naccounts
+	8.509472	SELECT abalance FROM pgbench_accounts WHERE aid = :aid;

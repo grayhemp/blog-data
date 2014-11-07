@@ -1,0 +1,24 @@
+transaction type: TPC-B (sort of)
+scaling factor: 1000
+query mode: simple
+number of clients: 16
+number of threads: 4
+duration: 300 s
+number of transactions actually processed: 279492
+tps = 931.402741 (including connections establishing)
+tps = 931.470468 (excluding connections establishing)
+statement latencies in milliseconds:
+	0.005207	\set nbranches 1 * :scale
+	0.003454	\set ntellers 10 * :scale
+	0.003269	\set naccounts 100000 * :scale
+	0.003378	\setrandom aid 1 :naccounts
+	0.003074	\setrandom bid 1 :nbranches
+	0.003104	\setrandom tid 1 :ntellers
+	0.003120	\setrandom delta -5000 5000
+	0.180025	BEGIN;
+	14.734205	UPDATE pgbench_accounts SET abalance = abalance + :delta WHERE aid = :aid;
+	0.349769	SELECT abalance FROM pgbench_accounts WHERE aid = :aid;
+	0.575908	UPDATE pgbench_tellers SET tbalance = tbalance + :delta WHERE tid = :tid;
+	0.465022	UPDATE pgbench_branches SET bbalance = bbalance + :delta WHERE bid = :bid;
+	0.520110	INSERT INTO pgbench_history (tid, bid, aid, delta, mtime) VALUES (:tid, :bid, :aid, :delta, CURRENT_TIMESTAMP);
+	0.270564	END;

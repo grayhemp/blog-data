@@ -1,0 +1,29 @@
+RW,TPS,,,,,,
+2.6.32-38-server,1215.72624,,,,,,
+3.2.0-70-generic,931.402741,,,,,,
+3.5.0-54-generic,1137.939445,,,,,,
+3.8.0-44-generic,1130.153725,,,,,,
+3.11.0-26-generic,1071.640004,,,,,,
+3.13.0-24-generic,1177.896237,,,,,,
+3.13.0-24-generic-sched_autogroup_enabled_1,1021.816572,,,,,,
+,,,,,,,
+RW,2.6.32-38-server,3.2.0-70-generic,3.5.0-54-generic,3.8.0-44-generic,3.11.0-26-generic,3.13.0-24-generic,3.13.0-24-generic-sched_autogroup_enabled_1
+UPDATE pgbench_accounts SET abalance = abalance + :delta WHERE aid = :aid;,10.0265,14.734205,12.231688,12.107474,12.445813,9.979536,11.761541
+,,,,,,,
+RW,2.6.32-38-server,3.2.0-70-generic,3.5.0-54-generic,3.8.0-44-generic,3.11.0-26-generic,3.13.0-24-generic,3.13.0-24-generic-sched_autogroup_enabled_1
+SELECT abalance FROM pgbench_accounts WHERE aid = :aid;,0.666641,0.349769,0.354815,0.390989,0.49218,0.71015,0.730725
+UPDATE pgbench_tellers SET tbalance = tbalance + :delta WHERE tid = :tid;,0.587778,0.575908,0.39023,0.428979,0.503782,0.710142,0.75714
+UPDATE pgbench_branches SET bbalance = bbalance + :delta WHERE bid = :bid;,0.548504,0.465022,0.338433,0.373732,0.473493,0.660938,0.690473
+"INSERT INTO pgbench_history (tid, bid, aid, delta, mtime) VALUES (:tid, :bid, :aid, :delta, CURRENT_TIMESTAMP);",0.494275,0.52011,0.298417,0.366233,0.42068,0.584153,0.696096
+,,,,,,,
+RO,TPS,,,,,,
+2.6.32-38-server,2056.074502,,,,,,
+3.2.0-70-generic,1029.816289,,,,,,
+3.5.0-54-generic,1896.388357,,,,,,
+3.8.0-44-generic,1912.409801,,,,,,
+3.11.0-26-generic,1875.319313,,,,,,
+3.13.0-24-generic,1877.331934,,,,,,
+3.13.0-24-generic-sched_autogroup_enabled_1,2157.248407,,,,,,
+,,,,,,,
+RO,2.6.32-38-server,3.2.0-70-generic,3.5.0-54-generic,3.8.0-44-generic,3.11.0-26-generic,3.13.0-24-generic,3.13.0-24-generic-sched_autogroup_enabled_1
+SELECT abalance FROM pgbench_accounts WHERE aid = :aid;,7.750922,15.503237,8.413738,8.343583,8.509472,8.492601,7.393796

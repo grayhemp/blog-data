@@ -1,0 +1,2 @@
+echo noop > /sys/block/dm-0/queue/scheduler
+echo 16384 > /sys/block/dm-0/queue/read_ahead_kb
